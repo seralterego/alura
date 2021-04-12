@@ -3,7 +3,7 @@
 
 ## ANTES DE COMEÇAR
 
-- [Como posso aprender a programar? #HipstersPontoTube](https://www.youtube.com/watch?v=MwCx2qKdbDw)
+- [Como posso aprender a programar? #HipstersPontoTube](https://www.youtube.com/watch?v=MwCx2qKdbDw) | (./aula00/readme.md)
 - [Como posso estudar melhor? #HipstersPontoTube](https://www.youtube.com/watch?v=Is6c9KSGCbk&list=PLh2Y_pKOa4Ufs_KwjTdGBFH6b65ChApyD&index=30)
 
 ---
@@ -17,7 +17,7 @@
 
 ## LIVES e EXTRAS
 
-- [LIVE DE AQUECIMENTO | ImersãoDev e Primeiros Passos na Programação](./livesEextrgitas/readme.md)
+- [LIVE DE AQUECIMENTO | ImersãoDev e Primeiros Passos na Programação](./assets/livesEextras/readme.md)
 
 ---
 
