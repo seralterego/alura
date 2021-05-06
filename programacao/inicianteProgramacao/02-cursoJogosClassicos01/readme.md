@@ -1,4 +1,4 @@
-p# Curso de Jogos clássicos parte 1: Iniciando no JavaScript com Pong
+# Curso de Jogos clássicos parte 1: Iniciando no JavaScript com Pong
 
 <!-- LEGENDAS para ÍCONES:
   - :link:               = Links da web
