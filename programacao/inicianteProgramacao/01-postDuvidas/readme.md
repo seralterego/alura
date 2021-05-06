@@ -1,5 +1,24 @@
 # 5 dúvidas de quem quer iniciar na carreira de programação
 
+<!-- LEGENDAS para ÍCONES:
+  - :link:               = Links da web
+  - :running::dash:      = Fazendo
+  - :books:              = Conteúdo
+  - :memo:               = Exercícios
+  - :white_check_mark:   = Feito
+  - :dart:               = Módulo Concluído
+  - :trophy:             = Medalhas
+  - :information_source: = Informação importante
+  - :name_badge:         = Certificado
+  - :warning:            = Prioridades
+  - :page_facing_up:     = para Artigos
+  - :tada:               = para Eventos
+  - :notebook:           = Conteúdo extra com Livro
+  - :blue_book:          = Conteúdo extra da Alura+
+  - :headphones:         = Conteúdo em áudio
+  - :tv:                 = Conteúdo em vídeo
+-->
+
 :link: <https://blog.caelum.com.br/5-duvidas-de-quem-quer-iniciar-na-carreira-de-programacao/>
 
 **Obs**: anotação só dos pontos mais relevantes
