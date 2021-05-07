@@ -91,7 +91,7 @@ Feito isso, podemos começar.
 >
 > A bolinha ainda não está colidindo com a raquete, ultrapassando-a e tocando a lateral da tela. Podemos, inclusive, visualizar isto melhor diminuindo a velocidade da bolinha, que queremos que mude de direção assim que tocar na raquete. Podemos criar um bloco para verificar se estamos tocando na borda.
 >
-> <p style="background-color: #333; padding: 10px; color: white">
+> <p style="background-color: #272822; padding: 10px; color: white">
 > Para deixar o código organizado, é possível clicar com o lado direito do mouse no painel principal e em "Limpar Blocos".
 > </p>
 >
@@ -123,7 +123,7 @@ Feito isso, podemos começar.
 >
 > Para enxergarmos isto, vamos diminuir novamente a velocidade da bolinha, de `12` para `2`, e clicar no ícone da bandeira verde. A bolinha está tocando na borda da tela, ultrapassando a segunda raquete! Para o código correspondente a esta ação feito para a primeira raquete, iremos a "Operadores", clicaremos e arrastaremos o losango composto por "[hexágono] ou [hexágono]" para o painel principal, dentro do bloco "se...".
 >
-> <p style="background-color: #333; padding: 10px; color: white">
+> <p style="background-color: #272822; padding: 10px; color: white">
 > Neste momento, a segunda raquete estava nomeada como "minha raquete2" por *default*, por ser uma cópia, lembram? Basta renomeá-la para darmos uma sentido para ela, como para "raquete do oponente".
 > </p>
 >
@@ -137,7 +137,7 @@ Feito isso, podemos começar.
 >
 > Já sabemos que armazenamos valores na memória do nosso computador por meio de variáveis. Por conta disso, criaremos duas variáveis, disponíveis para todos os atores — uma para armazenamento dos nossos pontos, denominada "meus pontos", e outra para os pontos do oponente, "pontos do oponente". Deixar da maneira padrão não é tão interessante visualmente, então clicaremos sobre elas com o lado direito do mouse para verificarmos as opções de exibição das variáveis; neste caso, escolheremos "letras grandes".
 >
-> <p style="background-color: #333; padding: 10px; color: white">
+> <p style="background-color: #272822; padding: 10px; color: white">
 > Também é possível clicar duas vezes sobre a exibição das variáveis para alterá-las!
 > </p>
 >
@@ -147,25 +147,276 @@ Feito isso, podemos começar.
 >
 > Da maneira em que está, este último bloco de código possui esta borda assim que clicamos no ícone de bandeira verde, mas ela não se mantém. É necessário envolvermos o bloco contendo "se..." em outro, "sempre". Além disso, queremos poder criar nossos próprios pontos, então dentro de "sempre" acrescentaremos outro bloco "se...", que ficará "se 'posição x' > 229 então" acompanhado por "adicione 1 a 'meus pontos'".
 >
+> Entretanto, ao testarmos, o jogo se inicia com 2 pontos para o adversário. Para corrigirmos isto, acrescentaremos "mude 'meus pontos' para 0" e "mude 'pontos do oponente' para 0" após "esconda a variável 'posição y da bolinha'". Testando o jogo, perceberemos que tudo funciona conforme esperado.
+>
+> Porém, as verificações constantes acabam consumindo memória, então poderemos alterar este último "se..." para algo que espere até que se atinjam estas posições da bolinha que definimos nas condições. Isso fará com que ganhemos em processamento, pensando na otimização do nosso jogo. Este último bloco será separada em dois:
+>
+> <p style="background-color: #333; padding: 10px">
+> quando [ícone de bandeira verde] for clicado
+> sempre
+> <p style="background-color: #272822; padding: 10px">
+> espere até que 'posição x' < -229
+> adicione 1 a 'pontos do oponente'
+> </p>
+> </p>
+>
+> E
+>
+> <p style="background-color: #333; padding: 10px">
+> quando [ícone de bandeira verde] for clicado
+> sempre
+> <p style="background-color: #272822; padding: 10px">
+> espere até que 'posição x' > 229
+> adicione 1 a 'pontos do oponente'
+> </p>
+> </p>
 >
 
 #### Sons e compartilhando o jogo
+>
+> Nosso jogo está ficando muito legal, temos as colisões da bolinha nas raquetes, a marcação de pontos... Mas há um recurso faltando em nosso jogo, existente na maioria dos jogos: o som, que nos auxilia na ambientação. No Scratch, temos a aba "Sons", e ao clicarmos nele, teremos um som padrão, que iremos deletar. No canto inferior esquerdo, há um ícone de alto falante para selecionarmos um som de nossa preferência.
+>
+> Que categoria de som combina mais com o nosso jogo? "Esportes", talvez, composta por sons variados, dentre eles, de tênis e ping pong. Escolheremos este último (Ping Pong Hit, que poderá ser renomeado para "raquetada", por exemplo), e poderemos editá-lo clicando na opção "Cortar Trecho", cortando o primeiro barulho da bolinha batendo e mantendo apenas o segundo. Clicaremos em "Salvar" e voltaremos à aba "Código".
+>
+> Como queremos que este som toque quando a bolinha colidia com qualquer ma das raquetes, de "Som" clicaremos e arrastaremos "toque o som 'raquetada'". Os blocos ficarão da seguinte maneira:
+>
+> <p style="background-color: #333; padding: 20px">
+> quando [ícone de bandeira verde] for clicado
+> sempre
+> <p style="background-color: #272822; padding: 20px">
+> se "tocando em 'minha raquete'? ou 'tocando em 'raquete do oponente'?"<br><br>
+>   aponte para a direção "direção" * -1 <br>
+>   toque o som "raquetada"
+> </p>
+> </p>
+>
+> Testaremos e diminuiremos o volume do som na aba "Sons". Agora, podemos definir um som para quando se marca um ponto. Escolheremos "Coin" da categoria "Efeitos", diminuiremos seu volume e alteraremos seu nome para "ponto". Acrescentaremos "toque o som 'ponto'" nos blocos de código referentes tanto à nossa pontuação quanto ao do oponente, dentro dos laços "sempre".
+>
+> Também acrescentaremos uma trilha sonora de fundo ao nosso jogo. Para isto, temos a categoria "Loops". No código, como queremos que o som comece a tocar assim que iniciamos o jogo, posicionaremos "toque o som 'trilha sonora' até o fim" no primeiro bloco. Porém, para que ele toque sem parar, devemos inclui-lo em um bloco "sempre".
+>
+> Para mostrarmos o jogo para outras pessoas, no topo do programa existe um nome, no caso, "Untitled-36", lado do botão "Compartilhar". Vamos trocar este nome para "Pong com Scratch" e clicar no botão "Ver a Página do Projeto". Na parte de instruções, podemos escrever algo como:
+>
+> "Utilize as setas para cima e para baixo para movimentar a raquete!"
+>
+> Por fim, basta clicarmos em "Compartilhar", na parte superior da tela, e distribuir o link exibido na barra de endereços do navegador. Agora que desenvolvemos a nossa lógica de programação, vamos partir para outro desafio — criar este mesmo jogo utilizando outra linguagem de programação, o JavaScript.
 
 #### Faça como eu fiz na aula
+>
+> **Opinião do instrutor**
+> Resumo do código:
+>
+> - ator `bolinha`:
+![Pong com Scratch](../../../_prints/0001.png)
+>
+> - ator `raquete`:
+![Pong com Scratch](../../../_prints/0002.png)
+>
+> - ator `raquete oponente`:
+![Pong com Scratch](../../../_prints/0003.png)
+>
+> O gabarito deste exercício é o passo a passo demonstrado no vídeo. Tenha certeza de que tudo está certo antes de continuar.
 
 #### Jogo mais difícil
+>
+> <p style="color: white; background-color: #272822; padding: 20px">
+> A alternativa dada como certa nessa questão é um tanto quanto controversa com relação aos dados do enunciado. <br>
+> Dado o valor de 50 no subtraendo do ator bolindo, o correto seria DIMINUIR o valor e não AUMENTAR o valor do subtraendo como descriot na alternativa dada como certa.
+> </p>
+>
+> Para movimentar a raquete do oponente de forma inteligente, uma pessoa desenvolveu o seguinte código no ator `bolinha`:
+![Pong com Scratch](../../../_prints/0004.png)
+>
+> E no ator `raquete oponente`:
+![Pong com Scratch](../../../_prints/0005.png)
+>
+> Após jogar alguma tempo, percebeu que o jogo estava muito fácil, pois o oponente errava muito.
+>
+> Com base no código usado pela pessoa, o que ela pode fazer para a raquete do oponente acertar mais a bolinha?
+>
+> [ x ] A - No código de ator `bolinha`, a pessoa pode diminuir o valor do subtraendo.
+> <small>Certo! Quanto mais próximo de 0 for o subtraendo, mais perfeito será o movimento da raquete do oponente. Conforme diminuímos esse valor, aumentamos a chance de erro da raquete do oponente.</small>
+>
+> [ ] B - No código de ator `bolinha`, a pessoa pode zerar o valor do subtraendo e passar a posição Y da bolinha.
+>
+> [ ] C - No código de ator bolinha, a pessoa pode alterar o valor do subtraendo para `-100`
 
 #### O que aprendemos?
+>
+> **Nessa aula:**
+> - Desenvolvemos o jogo do Ponto utilizando a linguagem de progrmaação Scratch;
+> - Implementamos a colisão da bolinha com as bordas, minha raquete e raquete do oponente;
+> - Movimentamos a raquete do oponente de forma individual, para acertar a bolinha na maioria das vezes;
+> - Criamos o placar do jogo, indicando os meus pontos e do oponente;
+> - Adicionamos sons e editamos a página do jogo Scratch para que outras pessoas possam jogar.
 
 ---
 
 ### Iniciando no JavaScript
 
 #### Cenário e bolinha
+>
+> Desenvolvemos nosso jogo e consolidamos a lógica de programação! Agora, vamos desenvolvê-lo em outra linguagem de programação, o JavaScript. Mas onde iremos fazer isso, e como iremos visualizá-lo?
+>
+> Utilizaremos um serviço Web chamado [p5.js](http://editor.p5js.org/), que exige cadastro de uma conta para podermos salvar os nossos projetos. Iremos manter o Scratch aberto, também, para fazermos algumas comparações. Nele, temos o ícone de bandeira verde, enquanto no p5 temos um botão de play que, ao ser pressionado, habilita um quadrado de "Preview"; na área de código, há algumas linhas preexistentes.
+>
+> O fundo cinza em "Preview" é criado a partir da função `createCanvas()`, que possui dois valores, ambos `400`. Vamos testar alterando somente o primeiro para `800`. Isto fará com que a largura do retângulo cinza, que é onde será exibido nosso jogo, aumente. As alterações feitas no código se refletem ao seu lado conforme são feitas.
+>
+> Também temos a função `background()`, cujo valor default é `220`. Trocaremos para `260`, e o fundo ficará todo branco, em vez de cinza. Quanto menor este valor, mais escuro fica o fundo do retângulo que antes era cinza. Por isto, deixaremos `0` para que o fundo do nosso jogo fique preto.
+>
+> Há um problema: no Scratch, todo o código fica visível e é intuitivo montá-los, bastando buscá-los de acordo com o que queremos fazer dentre as opções disponibilizadas. Começaremos desenhando uma bolinha, tal como fizemos no Scratch. Simplesmente escrever `circulo` dentro do bloco de código de `draw()` não nos traz nenhum retorno, e ainda dá erro — "circulo is not defined", ou "circulo não está definido".
+>
+> Para buscarmos pelos códigos necessários, clicaremos em "Help & Feedback" e em "Reference", o que abrirá uma nova aba. Em Shape, dentre as funções listadas, está `circle()` que, após clicarmos, exibirá um exemplo: `circle(30, 30,20)`. Descendo um pouco a página, temos a explicação da sua sintaxe, `circle(x, y, d)`, cujos parâmetros são, respectivamente, a coordenada no eixo X, no eixo Y e o diâmetro do círculo.
+>
+> <p style="color: white; background-color: #272822; padding: 20px">
+> Lembrando que o diâmetro é o dobro do raio de uma circunferência, que é a linha que liga o centro da mesma à sua borda.
+> </p>
+>
+> O trecho de código ficará, portanto, assim:
+>
+~~~javascript
+function setup() {
+  createCanvas(600, 400);
+}
+
+function draw() {
+  background(0);
+  circle(0, 0, 50);
+}
+~~~
+>
+> Ao pressionarmos o botão de play, teremos cerca de 1/4 do círculo posicionado no canto superior esquerdo da tela. Por quê será que isso acontece? No Scratch, definimos como posição inicial da bolinha a coordenada (0, 0), a partir do centro, enquanto aqui o plano cartesiano, isto é, a movimentação nos eixos X e Y será um pouco diferente: o (0, 0) da nossa tela passa a ser o extremo canto superior esquerdo, exatamente onde se encontra a bolinha no momento.
+>
+> Será necessário, portanto, aumentar os valores deles para que a bolinha fique visível e localizada no centro da tela. E para que o código fique ainda mais claro e legível, armazenaremos tais valores em variáveis, usando a palavra `let`:
+>
+~~~javascript
+let xBolinha = 300;
+let yBolinha = 200;
+let diametro = 15;
+
+function setup() {
+  createCanvas(600, 400);
+}
+
+function draw() {
+  background(0);
+  circle(xBolinha, yBolinha, diametro);
+}
+~~~
+>
+> <p style="color: white; background-color: #272822; padding: 20px">
+> As nomenclaturas de variáveis seguem a convenção de terem a primeira letra da primeira palavra minúscula, e as primeiras letras das demais palavras, se houver, em maiúscula. Esta convenção se denomina **Camel Case**.
+> </p>
+>
+> Agora, precisaremos fazer com que ela se movimente, em ambos os eixos. Para isso, indicaremos na função `draw()` que `xBolinha` sempre terá acréscimo de `1`, o que fará com que a bolinha se movimente para a direita, em linha reta.
+>
+~~~javascript
+function draw() {
+  background(0);
+  circle(xBolinha, yBolinha, diametro);
+  xBolinha = xBolinha + 1;
+}
+~~~
+>
+> O `1`, então, seria a velocidade com que a bolinha se movimenta, porém isto não fica claro em nosso código. Criaremos a variável `velocidadeXBolinha`, para a qual atribuiremos o valor `6`, para testarmos, e teremos `xBolinha = xBolinha + velocidadeXBolinha`. Com isto, a bolinha se locomove para a direita até sumir da tela.
+>
+> Uma forma mais elegante de escrevermos esta mesma linha é `xBolinha += velocidadeXBolinha`, ou seja, o X da bolinha será seu valor acrescido de sua velocidade. Como queremos que a bolinha se movimente para direções distintas, criaremos `yBolinha`, e a variável `velocidadeYBolinha`, com valor `6`.
+>
+~~~javascript
+let xBolinha = 300;
+let yBolinha = 200;
+let diametro = 15;
+
+let velocidadeXBolinha = 6;
+let velocidadeYBolinha = 6;
+
+function setup() {
+  createCanvas(600, 400);
+}
+
+function draw() {
+  background(0);
+  circle(xBolinha, yBolinha, diametro);
+  xBolinha += velocidadeXBolinha;
+  yBolinha += velocidadeYBolinha;
+}
+~~~
+>
+> Assim, sepre que iniciarmos o jogo, a bolinha surgirá do centro, indo para baixo diagonalmente até desaparecer na tela. Não é bem isso que queremos, e sim que ela permaneça dentro das bordas da tela. Faremos isso a seguir!
 
 #### Colisão com as bordas
+>
+> A bolinha está se movendo para lém das bordas do nosso jogo, e não é este o comportamento que queremos. Queremos que, assim que ela toque uma das bordas, ela inverta a posição, assim como fizemos no Scratch. Para isto, precisamos verificar se ela está tocando a borda em algum momento, dentro da função que etá desenhando o nosso jogo (`draw()`).
+>
+> Na programação, esta verificação, o "se", é escrito com `if`, e usaremos uma variável que o próprio p5 disponibiliza. Além disso, comentaremos a linha contendo `yBolinha`. Se `xBolinha` for maior que a largura (`width`) da tela, queremos fazer algo, que por sua vez estará entre chaves (ou "bigodes"). No caso, iremos multiplicar `velocidadeXBolinha` por `-1`, para que ela se movimente no sentido oposto.
+>
+~~~javascript
+function draw() {
+  background(0);
+  circle(xBolinha, yBolinha, diametro);
+  xBolinha += velocidadeXBolinha;
+  //yBolinha += velocidadeYBolinha;
+
+  if (xBolinha > width) {
+    velocidadeXBolinha *= -1;
+  }
+}
+~~~
+>
+> Ao testarmos este código, a bolinha parte da área central da tela, colide com a lateral direita da tela, inverte o sentido, e desaparece quando ultrapassa a lateral esquerda da tela. Sabemos que esta lateral é o X = 0, portanto acrescentaremos outra condição no código, por meio de duas barras verticais, o que quer dizer "ou":
+>
+~~~javascript
+if (xBolinha > width || xBolinha < 0) {
+  velocidadeXBolinha *= -1;
+}
+~~~
+>
+> Desta vez, temos a bolinha reconhecendo tanto o limite lateral direito quanto o esquerdo. Para lidarmos com os movimentos verticais, descomentaremos a linha com `yBolinha` e comentaremos a linah com `xBolinha`, para melhor entendimento.
+> Faremos algo similar ao que fizemos anteriormente, em relação a X, mas desta vez lidaremos com a altura (`height`) da tela.
+>
+~~~javascript
+function draw() {
+  background(0);
+  circle(xBolinha, yBolinha, diametro);
+  //xBolinha += velocidadeXBolinha;
+  yBolinha += velocidadeYBolinha;
+
+  if (xBolinha > width || xBolinha < 0) {
+    velocidadeXBolinha *= -1;
+  }
+  if (yBolinha > height || yBolinha < 0) {
+    velocidadeYBolinha *= -1;
+  }
+}
+~~~
+>
+> Descomentaremos a linha com `xBolinha` e verificaremos que as bordas estão sendo reconhecidas, como gostaríamos.
 
 #### Raio e diâmetro
+>
+![Pong no JavaScript](../../../_prints/0006.png)
+![Pong no JavaScript](../../../_prints/0007.png)
+>
+> Alteraremos as velocidades relativas tanto ao eixo X quanto ao eixo Y para `2` para deixar a bolinha mais lenta e assim conseguirmos observar estes movimentos. Uma parte da bolinha ainda ultrapassa os limites das bordas, e não queremos que isso aconteça. Vamos voltar às velocidades originais, `6`, e pensar no porquê disso estar acontecendo.
+>
+> Na documentação do `circle()`, é indicado que o X é o centro do círculo, o que será levado em consideração pora que se reconheça que houve uma colisão da bolinha com alguma das bordas. No entanto, queremos que isto se dê a partir do raio, isto é, das extremidades da bolinha. Uma vez que o diâmetro é 2x o valor do raio, criaremos a variável `raio`, que receberá `diametro / 2`.
+>
+> Com isso, diminuiremos as velocidades da bolinha novamente (para `2`), para exergarmos melhor os movimentos, e comentaremos a linha com `yBolinha` para testar primeiro no eixo X, em que somaremos o valor do raio para o lado direito, e subtrairemos o mesmo valor do lado esquerdo:
+>
+~~~javascript
+if (xBolinha + raio > width ||  xBolinha - raio > 0) {
+  velocidadeXBolinha *= -1;
+}
+~~~
+>
+> Em seguida, descomentaremos a linha com `yBolinha` e comentaremos a linha com `xBolinha`. Da mesma forma como fizemos em relação ao eixo X, para o eixo vertical teremos:
+>
+~~~javascript
+if (yBolinha + raio > width ||  yBolinha - raio > 0) {
+  velocidadeYBolinha *= -1;
+}
+~~~
+>
+> Voltaremos a velocidade da bolinha para `6` e testaremos mais uma vez, agora sem nenhum trecho comentado. Nossa bolinha está reconhecendo todas as bordas da tela do jogo!
 
 #### Refatoração e funções
 

@@ -45,10 +45,15 @@
 #### Conteúdo
 >
 > - :page_facing_up: [POST | 5 dúvidas de quem quer iniciar na carreira de programação - Blog da Caelum](./01-postDuvidas/readme.md) :white_check_mark:
+>
 > - :books: [CURSO | Jogos clássicos parte 1: Iniciando no JavaScript com Pong](./02-cursoJogosClassicos01/readme.md) :running::dash:
+>
 > - :books: [CURSO | Jogos clássicos parte 2: laços e listas com JavaScript](./03-cursoJogosClassicos02/readme.md)
+>
 > - :page_facing_up: [POST | Como escolher minha carreira em TI | Alura Cursos Online](./04-postEscolherCarreiraTI/readne.md)
+>
 > - :notebook: [LIVRO | Livro de jogos com HTML5 e JavaScript - Casa do Código](./05-livroJogosHTML&JavaScript/readme.md)
+>
 > - :blue_book: [ALURA+ | Qual é a diferença entre back-end e front-end?](./06-aluraMaisDiferencaBackFrontEnd/readme.md)
 >
 
