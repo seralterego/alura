@@ -32,15 +32,15 @@
 
 ## AULAS
 
-### Pong no Scratch
+### **Pong no Scratch**
 
-#### **Introdução**
+#### Introdução
 >
 > (...) e neste curso iremos desenvolver o primeiro jogo lucrativo da história, um jogo de esporte conhecido por Pong, que simula um tênis de mesa. (...)
 >
 > Inicialmente, vamos desenvolvê-lo utilizando a linguagem Scratch. (...) Em seguida, após aperfeiçoarmos nossa lógica de programação, desenvolveremos o mesmo jogo utilizando outra linguagem, o JavaScript.
 
-#### **Preparando o ambiente**
+#### Preparando o ambiente
 >
 > Olá, neste curso vamos criar um jogo do zero, utilizando duas linguagens de programação diferentes: [Scratch](https://scratch.mit.edu/) e [Javascript](https://www.caelum.com.br/apostila-html-css-javascript/38CA-eventos-com-javascript#caracteristicas-da-linguagem) dentro do [P5](https://editor.p5js.org/).
 > <hr>
@@ -53,7 +53,7 @@
 
 Feito isso, podemos começar.
 
-#### **Bolinha e minha raquete**
+#### Bolinha e minha raquete
 >
 > Vamos começar a criar nosso jogo de Pong com o Scratch, para fortalecermos nossa lógica de programação! Relembrando que a bolinha atuará em posições aleatórias, e temos que acertá-la, colidindo com ela por meio das raquetes. Acessaremos o [site do Scratch](http://scratch.mit.edu/) — caso não esteja logado em sua conta, na etapa anterior há uma explicação de preparação do ambiente, com um passo a passo do que é necessário para criá-la.
 >
@@ -251,7 +251,7 @@ Feito isso, podemos começar.
 
 ---
 
-### Iniciando no JavaScript
+### **Iniciando no JavaScript**
 
 #### Cenário e bolinha
 >
@@ -394,16 +394,17 @@ function draw() {
 #### Raio e diâmetro
 >
 ![Pong no JavaScript](../../../_prints/0006.png)
-![Pong no JavaScript](../../../_prints/0007.png)
 >
 > Alteraremos as velocidades relativas tanto ao eixo X quanto ao eixo Y para `2` para deixar a bolinha mais lenta e assim conseguirmos observar estes movimentos. Uma parte da bolinha ainda ultrapassa os limites das bordas, e não queremos que isso aconteça. Vamos voltar às velocidades originais, `6`, e pensar no porquê disso estar acontecendo.
 >
 > Na documentação do `circle()`, é indicado que o X é o centro do círculo, o que será levado em consideração pora que se reconheça que houve uma colisão da bolinha com alguma das bordas. No entanto, queremos que isto se dê a partir do raio, isto é, das extremidades da bolinha. Uma vez que o diâmetro é 2x o valor do raio, criaremos a variável `raio`, que receberá `diametro / 2`.
 >
+![Pong no JavaScript](../../../_prints/0007.png)
+>
 > Com isso, diminuiremos as velocidades da bolinha novamente (para `2`), para exergarmos melhor os movimentos, e comentaremos a linha com `yBolinha` para testar primeiro no eixo X, em que somaremos o valor do raio para o lado direito, e subtrairemos o mesmo valor do lado esquerdo:
 >
 ~~~javascript
-if (xBolinha + raio > width ||  xBolinha - raio > 0) {
+if (xBolinha + raio > width ||  xBolinha - raio < 0) {
   velocidadeXBolinha *= -1;
 }
 ~~~
@@ -411,7 +412,7 @@ if (xBolinha + raio > width ||  xBolinha - raio > 0) {
 > Em seguida, descomentaremos a linha com `yBolinha` e comentaremos a linha com `xBolinha`. Da mesma forma como fizemos em relação ao eixo X, para o eixo vertical teremos:
 >
 ~~~javascript
-if (yBolinha + raio > width ||  yBolinha - raio > 0) {
+if (yBolinha + raio > height ||  yBolinha - raio < 0) {
   velocidadeYBolinha *= -1;
 }
 ~~~
@@ -419,34 +420,387 @@ if (yBolinha + raio > width ||  yBolinha - raio > 0) {
 > Voltaremos a velocidade da bolinha para `6` e testaremos mais uma vez, agora sem nenhum trecho comentado. Nossa bolinha está reconhecendo todas as bordas da tela do jogo!
 
 #### Refatoração e funções
+>
+> Em nosso jogo, criamos uma bolinha e verificamos suas colisões com as bordas, e para que pudéssemos ter este resultado, criamos variáveis para a bolinha, melhorando a legibilidade do código. Na função `draw()` fazemos várias ações: desenhamos e movimentamos a bolinha dentro de uma determinada área, e verificamos se a bolinha está de fato colidindo ou não com as bordas.
+>
+> Será que existe uma maneira de deixarmos nosso código ainda melhor?
+>
+> Poderemos fazê-lo sem alterar seu comportamento por meio da **refatoração** e o uso de funções para melhor identificarmos cada trecho de código. Fora do escopo de `draw()`, criaremos a função `mostraBolinha()`, mas isto não será o suficiente, pois é necessário chamá-la em `draw()`. Do mesmo modo, criaremos `movimentaBolinha()` e `verificaColisaoBorda()`
+
+~~~javascript
+function draw(){
+  background(0);
+  mostraBolinha();
+  movimentaBolinha();
+  verificaColisaoBorda
+}
+
+function mostraBolinha (){
+  circle(xBolinha, yBolinha, diametro)
+}
+
+function movimentaBolinha (){
+  xBolinha += velocidadeXBolinha;
+  yBolinha += velocidadeYBolinha;
+}
+
+function verificaColisaoBorda (){
+  if (xBolinha + raio > width || xBolinha - raio < 0) {
+    velocidadeXBolinha *= -1;
+  }
+  if (yBolinha + raio > height || yBolinha - raio < 0) {
+    velocidadeYBolinha *= -1;
+  }
+}
+~~~
+>
+> Continuando, as variáveis `xBolinha`, `yBolinha`, `diametro` e `raio` se referem à bolinha, portanto poderemos adicionar um comentário `//variáveis da bolinha`, assim como um `//variáveis da velocidade da bolinha` logo acima das linhas que contém `velocidadeXBolinha` e `velocidadeYBolinha`.
+
+~~~javascript
+//variáveis da bolinha
+let xBolinha = 300;
+let yBolinha = 200;
+let diametro = 15;
+let raio = diametro / 2;
+
+//velocidade da bolinha
+let velocidadeXBolinha = 6;
+let velocidadeYBolinha = 6;
+~~~
+>
+> Esta é uma das formas de melhorarmos nosso código, deixando-o mais compreensível e organizado, sem modificar o comportamento final.
 
 #### Faça como eu fiz na aula
+>
+> **Sua vez!**
+> Após desenvolver o Pong utilizando o Scratch, vamos desenvolver este jogo utilizando outra linguagem de programação: Javascript.
+>
+> Utilizando o editor web do [P5](https://editor.p5js.org/seralterego/sketches/x4NPwY6jH), pinte o cenário na cor preta e crie uma bolinha que se movimente e reconheça as bordas, usando a mesma lógica de programação do Scratch.
+>
+- Linha do meu arquivo no p5: <https://editor.p5js.org/seralterego/sketches/x4NPwY6jH>
+>
+> O gabarito deste exercício é o passo a passo demonstrado no vídeo. Tenha certeza de que tudo está certo antes de continuar.
 
 #### Função na programação
+>
+> Sem alterar o comportamento do jogo, movemos alguns códigos da função `draw` para funções que criamos:
+> - `function mostraBolinha()`
+> - `function movimentaBolinha()`
+> - `function verificaColisaoBorda()`
+>
+> Sabendo disso, podemos definir que função é:
+>
+> ![Resposta do exercício](../../../_prints/0008.png "Um conjunto de comandos ou códigos que realiza uma tarefa esepecífica.")
 
 #### O que aprendemos?
+>
+> **Nessa aula:**
+> - Conhecemos o ambiente de desenvolvimento web [P5Js](https://p5js.org/).
+> - Pintamos o cenário de preto alterando o valor do parâmetro da função `background` de `220` para `0`.
+> - Criamos a bolinha do jogo através da função `circle`.
+> - Detectamos a colisão da bolinha com as bordas verificando a posição `x` e `y`.
+> - Melhoramos o código criando anotações e funções sem alterar o comportamento do jogo.
+
+**Na próxima aula**
+> Vamos criar a minha raquete, que se movimenta atravás das teclas do teclado e implementar a colisão da bolinha com ela!
 
 ---
 
 ### Criando minha raquete no jogo
-
-#### Criando minha raquete
+>
+> Em nosso jogo, atualmente temos a bolinha reconhecendo as bordas, mas ainda faltam componentes extremamente importantes: as raquetes. Para a criação da bolinha temos a função `mostraBolinha()` com `circle()`, uma palavra reservada do p5. Não adianta criarmos uma função `raquete()`, pois obteremos um erro indicando que este nome não está definido.
+>
+> Vamos consultar a documentação acessando "Help & Feedback > Reference", no menu superior do p5. Dentre as funções listadas em Shape, está `rect()`, que se refere à forma retangular. Ao ser clicado, teremos alguns exemplos e os parâmetros necessários para seu uso. O X e o Y, que são os primeiros parâmetros, se relacionam à posição do retângulo, enquanto o terceiro e o quarto, W e H, respectivamente, são a largura a altura.
+>
+~~~javascript
+rect(x, y, w, h, [tl], [tr], [br], [bl])
+~~~
+>
+> Acrescentaremos a função ao nosso código, passando parâmetros com valores arbitrários para testarmos:
+>
+~~~javascript
+function draw() {
+  background(0);
+  mostraBolinha();
+  movimentaBolinha();
+  verificaColisaoBorda();
+  rect(5, 150, 10, 90);
+}
+~~~
+>
+> Já que neste momento iremos lidar apenas com a raquete, podemos comentar a linha `movimentaBolinha()` para testarmos melhor. E assim como fizemos para a bolinha, criaremos variáveis para armazenar os valores relacionados à raquete - não podemos nos esquecer de substituir os valores antes definidos na função `rect()` por estas variáveis!
+>
+~~~javascript
+// variáveis da raquete
+let xRaquete = 5;
+let yRaquete = 150;
+let raqueteComprimento = 10;
+let raqueteAltura = 90;
+~~~
+>
+> Por fim, colocaremos todo o código de `rect()` para uma função, visando melhor organização e legibilidade:
+>
+~~~javascript
+function mostraRaquete() {
+  rect(xRaquete, yRaquete, raqueteComprimento, raqueteAltura);
+}
+~~~
+>
+> E então precisaremos executar esta função dentro do `draw()`:
+>
+~~~javascript
+function draw() {
+  background(0);
+  mostraBolinha();
+  movimentaBolinha();
+  verificaColisaoBorda();
+  mostraRaquete();
+}
+~~~
+>
+> Em seguida movimentaremos nossa raquete!
 
 #### Movimento minha raquete
+>
+> Nossa raquete ficou bem legal no nosso jogo - seu posicionamento e tamanhos estão da maneira como gostaríamos. No entanto, ela ainda não se movimenta como no Scratch, em que verificávamos se a seta para cima ou para baixa estava pressionada, e para cada um destes casos executávamos uma ação correspondente.
+>
+> O JavaScript está em inglês, e não em português como no Scratch; ao modificarmos o idioma no Scratch, verificamos como este trecho fica após a tradução. Será que se escrevermos desta forma no p5 conseguimos o resultado desejado?
+>
+> Para garntirmos isto, vamos acessar a documentação mais uma vez e buscar por "events". Estão listados eventos de aceleração, teclado, mouse, toque, dentre os quais optaremos por keyPressed(). No exemplo dado pela documentação, a cor do retângulo é alterada depois de se pressionar a tecla.
+>
+> Porém, queremos criar um movimento por meio do uso das setas do teclado, e não mudar a cor da raquete. Voltando à documentação, poderíamos testar cada uma das funções relativas ao *Keyboard*, mas como não há tempo, ficaremos com `keyIsDown()`. Vamos criar uma função para de fato movimentarmos a raquete.
+>
+> Assim, se a tecla da seta para cima for pressionada, queremos que a raquete se movimente para cima, e para isto é necessário subtrairmos a posição de Y. Faremos algo muito similar para quando a tecla da seta para baixo for pressionada, e teremos o seguinte código:
+>
+~~~javascript
+function movimentaMinhaRaquete() {
+  if (keyIsDown(UP_ARROW)) {
+    yRaquete -= 10;
+  }
+  if (keyIsDown(DOWN_ARROW)) {
+    yRaquete += 10;
+  }
+}
+~~~
+>
+> Para que esta função seja executada no bloco `draw()`, incluiremos-na junto às demais:
+>
+~~~javascript
+function draw() {
+  background(0);
+  mostraBolinha();
+  //movimentaBolinha();
+  verificaColisaoBorda();
+  mostraRaquete();
+  movimentaMinhaRaquete();
+}
+~~~
+>
+> Testaremos pressionando as teclas de seta para cima e para baixo, e repararemos que há um som vinculado a estes movimentos, colocado pelo p5 por questões de **acessibilidade**. Podemos ativá-lo ou desativá-lo clicando no ícone de engrenagem no canto superior direito da tela, na aba "Acessibility". Por ora, desmarcaremos as checkboxes de "Plain-text", "Table-text" e "Sound".
+>
+> Para que possamos testar o jogo do p5, é necessário dar enfâse à tela do jogo, isto é, clicar nela após pressionarmos o ícone de play.
 
 #### Colisão com a raquete
+>
+> Já fizemos com que a raquete se movimente por meio das setas do teclado! E para que o jogo funcione, descomentaremos `movimentaBolinha()` e testaremos novamente. A bolinha parece ultrapassar a raquete, ignorando sua existência, o que pode ser percebido com maior clareza se diminuirmos a velocidade da bolinha. Além disso, poderemos comentar a linha `yBolinha += velocidadeYBolinha`, para que o movimento só aconteça no eixo X.
+>
+> Assim como no Scratch, queremos criar uma colisão entre a raquete e a bolinha, portanto criaremos a função `verificaColisaoRaquete()`, que chamaremos dentro de `draw()` e será bem parecida com o que temos em `verificarColisaoBorda()`.
+>
+~~~javascript
+function verificaColisaoRaquete() {
+  if (xBolinha - raio < xRaquete + raqueteComprimento) {
+    velocidadeXBolinha *= -1;
+  }
+}
+~~~
+>
+> A colisão funciona bem, então testaremos posicionar a raquete para cima do nível em que a bolinha se locomove horizontalmente. Mesmo sem tocar a raquete, ela deixa de tocar a borda lateral esquerda. O mesmo acontece se mantivermos a raquete abaixo do nível de locomoção horizontal da bolinha.
+>
+> Isso acontece pois definimos que se `xBolinha - raio < xRaquete + raqueteComprimento`, a bolinha deverá mudar de direção. Não especificamos a posição de Y da bolinha em relação à posição de Y da nossa raquete. Para isso, não precisaremos criar um `if` para verificar se a bolinha está acima, ou abaixo da raquete.
+>
+> Queremos inverter a velocidade de X caso haja colisão, portanto incluiremos mais duas verificações:
+>
+~~~javascript
+function verificaColisaoRaquete() {
+  if (xBolinha - raio < xRaquete + raqueteComprimento
+    && yBolinha - raio < yRaquete + raqueteAltura
+    && yBolinha + raio > yRaquete) {
+    velocidadeXBolinha *= -1;
+  }
+}
+~~~
+>
+> Agora que conseguimos corrigir isso, voltaremos a velocidade da bolinha para `6` e descomentaremos todos os trechos de código que estavam comentados.
 
 #### Importando outra biblioteca
+>
+> Implementamos a colisão da bolinha com a raquete, e obtivemos um comportamento esperado, a mudança de direção da bolinha sempre que isto acontece. Será que outras pessoas já não passaram por este mesmo problema utilizando o p5 e o JavaScript? Será que elas não compartilharam as soluções encontradas para que outras pessoas pudessem usá-las também? A resposta é sim!
+>
+> Na documentação do p5, há em *Libraries* algumas bibliotecas contendo soluções ou implementações que podemos adicionar em nosso projeto, feitas por outras pessoas. Escolheremos, por exemplo, "p5.collide.2D", que ao sr clicado abrirá uma página do GitHub, plataforma que serve para hospedar código, seja de projetos pessoais ou profissionais.
+>
+> Neste caso, a página exibe o funcionamento das funções contidas nesta biblioteca. Em nosso projeto, na função `mostraRaquete()` temos o `react()`, e em `mostraBolinha()` temos `circle()`. Similarmente, na biblioteca existe a função `collideRectCircle()`, extamente o que precisaríamos para o nosso projeto.
+>
+> Na explicação sobre como ela funciona existe um trecho de código. Será que basta adicioná-la em nosso projeto para que funcione conforme gostaríamos?
+>
+> Na verdade, uma biblioteca é composta por uma série de códigos, portanto, inicialmente iremos baixá-los, clicando no botão "Clone or download > Download ZIP", no GitHub. O arquivo que iremos utilizar é o `p5.collide2d.js`; no p5, do lado esquerdo do painel que contém nosso código, existe um `>` que, ao ser clicado, exibe todas as pastas e arquivos que compõem o projeto: `index.html`, `style.css` e `sketch.js`.
+>
+> Clicaremos no símbolo `v` ao lado de "project-folder", e em "Add file" para adicionar o arquivo recém baixado. Segundo a documentação, a função `collideRectCircle()` cria uma variável hit para verificar se há colisão ou não, como `var hit = false`. Em nosso projeto, o `var` corresponde a `let`. Vamos criar uma variável similar:
+>
+~~~javascript
+let colidiu = false;
+~~~
+>
+> E então, todo o código referente à colisão é inserida na função `draw()`, que em nosso código é bem específica e contém uma função para cada ação tomada. Vamos acrescentar a função `colisaoMinhaRaqueBiblioteca()` e comentar a linha que vem acima, com `verificarColisaoRaquete()`, uma vez que queremos utilizar a solução encontrada por outra pessoa, isto é, `colisaoMinhaRaqueteBiblioteca()`, que criaremos no fim do nosso código:
+>
+~~~javascript
+function colisaoMinhaRaqueteBiblioteca() {
+  collideRectCircle(200, 200, 100, 150, mouseX, mouseY, 100);
+}
+~~~
+>
+> O que significam estes parâmetros?
+>
+> Os quatro parâmetros iniciais se referem ao nosso retângulo, que é a raquete, os quais podem ser substituídos por `xRaquete`, `yRaquete`, `raqueteComprimeto` e `raqueteAltura`, respectivamente. Os demais parâmetros tê a ver com o círculo, e os trocaremos por `xBolinha`, `yBolinha` e `diametro`.
+>
+> Para identificarmos se de fato há colisão, ou não, atribuiremos o resultado desta função à variável `colidiu`, e implementaremos uma condição para quando está variável for `true`, a direção do movimento da bolinha se inverta.
+>
+~~~javascript
+function colisaoMinhaRaqueteBiblioteca() {
+  colidiu = collideRectCircle(xRaquete, yRaquete, raqueteComprimento, raqueteAltura, xBolinha, yBolinha, diametro);
+  if (colidiu) {
+      velocidadeXBolinha *= -1;
+  }
+}
+~~~
+>
+> Ao testarmos, obteremos um erro, e de acordo com o console, `collideRectCircle` não está definido. Acontece que não refernciamos o novo arquivo em nosso código! Faremos isto em `index.html`, entre as tags de abertura e fechamento de `<body>`:
+>
+~~~html
+<body>
+  <script src="sketch.js"></script>
+  <script src="p5.collide2d.js"></script>
+</body>
+~~~
+>
+> Dessa vez, ao testarmos, teremos o resultado que gostaríamos. Então, quando precisamos de uma solução, poderemos nos perguntar se ela não existe, se alguém já não passou por isso. Muito provavelmente a resposta será sim, e podemos pesquisar por muitas alternativas na internet.
+>
+> Estamos utilizando a solução de outra pessoa, e quando pressionamos o botão de play, o console exibe `### p5.collide ###`. Isto não foi escrito por nós, sendo proveniente do código que baixamos, em `console.log("### p5.collide ###")`. Para que nada seja exibido no console, basta deletarmos toda essa linha. Iso nos mostra que, mesmo quando pegamos uma possível solução alheia, é possível alterá-la.
 
 #### Faça como eu fiz na aula
+>
+> ~~Sua~~ Minha vez!
+>
+> Agora que a bolinha se movimenta e reconhece a colisão com as bordas da tela, precisamos criar a nossa raquete, para interagirmos com o jogo. Sabendo disso:
+>
+> Desenhe um retângulo com a função `rect`, posicione no canto esquerdo da tela e o movimente através das setas para cima e para baixo do teclado.
+>
+- Linha do meu arquivo no p5: <https://editor.p5js.org/seralterego/sketches/x4NPwY6jH>
+>
 
 #### Outras bibliotecas no GitHub
+>
+> Criamos o código que verifica a colisão da bolinha com a nossa raquete verificando a posição `x` e `y` de cada um deles. Porém, acessando a documentação do P5Js, vimos que existe [uma solução disponível no GitHub](https://github.com/bmoren/p5.collide2D), para reconhecer a colisão entre objetos 2D.
+>
+> Sabendo disso, analise as afirmações abaixo e marque as verdadeiras.
+>
+> ![Resposta do exercício](../../../_prints/0009.png "Um conjunto de comandos ou códigos que realiza uma tarefa esepecífica.")
 
 #### O que aprendemos?
+>
+> - Criamos uma função para desenhar a raquete
+>
+~~~javascript
+function mostraRaquete(){
+  rect(xRaquete, yRaquete, raqueteComprimento, 
+    raqueteAltura);
+}
+~~~
+>
+> - Movimentamos a raquete através das setas para cima e para baixo do teclado, através dos códigos `keyIsDown(UP_ARROW)` e `keyIsDown(DOWN_ARROW)` respectivamente
+> - Implementamos a colisão da bolinha com a minha raquete, verificando a posição `x` e `y` de cada um deles.
+> - Importamos uma biblioteca do [Github](https://github.com/bmoren/p5.collide2D) que verifica a colisão.
+>
+> Na próxima aula, vamos criar a raquete do oponente e o placar do jogo.
 
 ---
 
 ### Criando a raquete do oponente
+>
+> Atualmente, temos a bolinha se movimentando para várias direções, a raquete se movimentando por meio das teclas de setas, a colisão entre elas acontecendo... Mas não estamos jogando contra ninguém. Assim como fizemos no Scratch, poderemos criar um oponente, isto é, outra raquete. Em nosso código, acrescentaremos:
+>
+~~~javascript
+//variáveis do oponente
+let xRaqueteOponente = 585;
+let yRaqueteOponente = 150;
+~~~
+>
+> Também criaremos uma função similar à `mostraRaquete()`:
+>
+~~~javascript
+function mostraRaqueteOponente() {
+  rect(xRaqueteOponente, yRaqueteOponente, raqueteComprimento, raqueteAltura);
+}
+~~~
+>
+> Não podemos nos esquecer de inclui-la no `draw()`, em que comentaremos a linha `movimentaBolinha()` para deixar o jogo pausado. Reparem, porém, que as funções `mostraRaqueteOponente()` e `mostraRaquete()` são iguais, exceto pelos dois primeiro parâmetros de `rect()`. Será que de fato é necessário criarmos uma função para cada caso?
+>
+> Vamos deltar a função recém criada, então, e alterar a `mostraRaquete()`, que passará a necessitar dois parâmetros. Do mesmo modo, `xRaquete` e `yRaquete` serão, simplesmente, `x` e `y`, respectivamente:
+>
+~~~javascript
+function mostraRaquete(x,y) {
+  rect(x, y, raqueteComprimento, raqueteAltura);
+}
+~~~
+>
+> Então, a função `draw()` ficará da seguinte forma:
+>
+~~~javascript
+function draw() {
+  background(0);
+  mostraBolinha();
+  //movimentaBolinha();
+  verificaColisaoBorda();
+  mostraRaquete(xRaquete, yRaquete);
+  movimentaMinhaRaquete();
+  //verificaColisaoRaquete();
+  colisaoMinhaRaqueteBiblioteca();
+  mostraRaquete(xRaqueteOponente, yRaqueteOponente);
+}
+~~~
+>
+> Assim, **reutilizamos as funções que criamos**, e temos uma função que mostra a raquete, não importa se a nossa ou a do oponente. A única diferença são os parâmetros passados a ela. Nossa raquete se movimenta verticalmente, porém não queremos que a raquete do oponente permaneça imóvel, sendo assim chamaremos a função `movimentaRaqueteOponente()` dentro do bloco de `draw()`, e a criaremos no fim do nosso código:
+>
+~~~javascript
+function movimentaRaqueteOponente() {
+
+}
+~~~
+>
+> No Scratch movimentamos a raquete adversária passando a posição Y da bolinha, para que ela fosse seguida, e alterávemos esta posição. Vamos fazer o mesmo no p5: criaremos uma função para alterar a velocidade Y relacionada ao oponente, similarmente ao que temos para a movimentação da bolinha, `velocidadeXBolinha` e `velocidadeYBolinha`.
+>
+~~~javascript
+//variáveis do oponente
+let xRaqueteOponente = 585;
+let yRaqueteOponente = 150;
+let velocidadeYOponente;
+~~~
+>
+> Manipularemos o valor de `velocidadeYOponente` em `movimentaRaqueteOponente()`, que ficará da seguinte forma:
+>
+~~~javascript
+function movimentaRaqueteOponente() {
+  velocidadeYOponente = yBolinha - yRaqueteOponente - raqueteComprimento / 2 - 30;
+  yRaqueteOponente += velocidadeYOponente
+}
+~~~
+>
+> Deste modo, indicaremos que `velocidadeYOponente` receberá a posição Y da bolinha, subtraída da posição Y da raquete do oponente e a altura da raquete, para que a bolinha sempre toque em algum ponto dela. Este valor será dividido por 2 e, ainda, subtrairemos 30, mesma margem utilizada no Scratch, em que deixamos `30`. Vamos testando e entendendo o que ficará melhor.
+>
+> Movimentaremos a bolinha descomentando a linha `movimentaBolinha()` de `draw()`, entretanto o faremos apenas no eixo Y, ou seja, comentaremos `xBolinha += velocidadeXBolinha` em `movimentaBolinha()`. Ao pressionarmos o play, teremos que a raquete do oponente segue a bolinha.
+>
+> Descomentaremos `xBolinha += velocidadeXBolinha`, mas, assim como já aconteceu anteriormente, a impressão é a de que a bolinha ultrapassa a raquete. Precisaremos corrigir isto, mas, antes, diminuiremos a velocidade da bolinha para `2` e movimentaremos a bolinha apenas no eixo horizontal comentando a linha `yBolinha += velocidadeYBolinha`, para comprovarmos que isto realmente acontece.
+>
+> Significa que não temos uma colisão da bolinha com a raquete do oponente. Lidaremos com isto a seguir!
 
 #### Raquete do oponente
 
