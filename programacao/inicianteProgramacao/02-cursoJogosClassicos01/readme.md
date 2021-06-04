@@ -30,6 +30,8 @@
 
 ---
 
+Arquivo com códigos da aula [aqui](./src/sketch.js)
+
 ## AULAS
 
 ### **Pong no Scratch**
@@ -803,6 +805,37 @@ function movimentaRaqueteOponente() {
 > Significa que não temos uma colisão da bolinha com a raquete do oponente. Lidaremos com isto a seguir!
 
 #### Raquete do oponente
+>
+> Criamos a movimentamos a raquete do oponente, porém ainda não existe uma colisão entre ela e a bolinha. No momento, temos `colisaoMinhaRaqueteBiblioteca()`, que duplicaremos e alteraremos:
+>
+~~~javascript
+function colisaoRaqueteOponenteBiblioteca() {
+  colidiu = collideRectCircle(xRaqueteOponente, yRaqueteOponente, raqueteComprimento, raqueteAltura, xBolinha, yBolinha, raio);
+  if (colidiu){
+    velocidadeXBolinha *= -1;
+  }
+}
+~~~
+>
+> Chamaremos esta função em `draw()`, colocando-a junto às demais, e ao pressionarmos play, agora, sim, teremos a colisão, comportamento que queremos, mas será que nosso código está escrito da melhor forma possível?
+>
+> Esperamos o mesmo resultado de `colisaoMinhaRaqueteBiblioteca()` e `colisaoRaqueteOponenteBiblioteca()`, e ambas as funções são idênticas entre si. Será que precisamos de mais nove linhas de código para mudarmos dois parâmetros? Como vimos anteriormente, poderemos dar um nome genérico para a função que unirá estas duas, como `verificaColisaoRaquete()`.
+>
+> No lugar de `xRaquete`, passaremos simplesmente `x`, e da mesma forma, `yRaquete` ficará com `y`, os quais receberemos como parâmetro da função. Lembrando que `x` e `y` podem ser nomeados como preferirmos.
+>
+~~~javascript
+function verificaColisaoRaquete(x, y) {
+  colidiu = collideRectCircle(x, y, raqueteComprimento, raqueteAltura, xBolinha, yBolinha, raio);
+  if (colidiu){
+      velocidadeXBolinha *= -1;
+  }
+}
+~~~
+>
+> Em `draw()`, substituiremos as linhas `colisaoRaqueteOponenteBiblioteca()` por `verificaColisaoRaquete(xRaqueteOponente, yRaqueteOponente)` e `colisaoMinhaRaqueteBiblioteca()` por `verificaColisaoRaquete(xRaquete, yRaquete)`.
+>
+> Quando `verificaColisaoRaquete()` for executada, com os parâmetros correspondentes, teremos o mesmo comportamento de antes, o reconnhecimento da colisão em ambas as raquetes. Vamos, então, voltar a velocidade da bolinha para `6`, descomentar a linha `verificaColisaoRaquete()` em `draw()`, e `yBolinha += velocidadeYBolinha` em `movimentaBolinha()`, e testar o jogo. Tudo funciona conforme gostaríamos!
+>
 
 #### Colisão com o oponente
 
