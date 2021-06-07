@@ -34,15 +34,15 @@ Arquivo com códigos da aula [aqui](./src/sketch.js)
 
 ## AULAS
 
-### **Pong no Scratch**
+### **01. Pong no Scratch**
 
-#### Introdução
+#### 01 - Introdução
 >
 > (...) e neste curso iremos desenvolver o primeiro jogo lucrativo da história, um jogo de esporte conhecido por Pong, que simula um tênis de mesa. (...)
 >
 > Inicialmente, vamos desenvolvê-lo utilizando a linguagem Scratch. (...) Em seguida, após aperfeiçoarmos nossa lógica de programação, desenvolveremos o mesmo jogo utilizando outra linguagem, o JavaScript.
 
-#### Preparando o ambiente
+#### 02 - Preparando o ambiente
 >
 > Olá, neste curso vamos criar um jogo do zero, utilizando duas linguagens de programação diferentes: [Scratch](https://scratch.mit.edu/) e [Javascript](https://www.caelum.com.br/apostila-html-css-javascript/38CA-eventos-com-javascript#caracteristicas-da-linguagem) dentro do [P5](https://editor.p5js.org/).
 > <hr>
@@ -55,7 +55,7 @@ Arquivo com códigos da aula [aqui](./src/sketch.js)
 
 Feito isso, podemos começar.
 
-#### Bolinha e minha raquete
+#### 03 - Bolinha e minha raquete
 >
 > Vamos começar a criar nosso jogo de Pong com o Scratch, para fortalecermos nossa lógica de programação! Relembrando que a bolinha atuará em posições aleatórias, e temos que acertá-la, colidindo com ela por meio das raquetes. Acessaremos o [site do Scratch](http://scratch.mit.edu/) — caso não esteja logado em sua conta, na etapa anterior há uma explicação de preparação do ambiente, com um passo a passo do que é necessário para criá-la.
 >
@@ -79,7 +79,7 @@ Feito isso, podemos começar.
 >
 > Desta vez, a nossa bolinha se movimenta em vários sentidos, de acordo com essa angulação. E como é que iremos interagir com este jogo? Teremos raquetes, atores que criaremos a seguir!
 
-#### Bolinha e minha raquete parte 2
+#### 04 - Bolinha e minha raquete parte 2
 >
 > Renomearemos o novo ator para "bolinha", e pintaremos outro ator, denominado "minha raquete", um retângulo de preenchimento e contorno brancos, para simular uma das raquetes. Na aba "Código", uma vez que queremos que ele comece do lado esquerdo da tela, enquanto a bolinha está no centro, definiremos que quando a bandeira verde for pressionada, queremos que a raquete vá para X `-220` e Y `0`.
 >
@@ -105,7 +105,7 @@ Feito isso, podemos começar.
 >
 > Porém, mais uma vez, o código só foi executado uma vez, quando o jogo se iniciou. Envolveremos todo o bloco do "se..." em outro, "sempre". Agora, sim, temos o comportamento esperado!
 
-#### Oponente e placar
+#### 05 - Oponente e placar
 >
 > A colisão da bolinha com a raquete está funcionando bem, porém a bolinha está se movimentando muito devagar e, além disso, nosso oponente é a parede. Vamos corrigir estes pontos alterando o bloco de código referente ao movimento da bolinha para "mova 12 passos" e duplicando a raquete que criamos clicando com o lado direito do mouse sobre o ator "minha raquete" e depois em "Duplicar".
 >
@@ -131,7 +131,7 @@ Feito isso, podemos começar.
 >
 > Isso quer dizer que se a bolinha estiver tocando na "minha raquete" ou em "raquete do oponente", esperamos que a direção seja alterada, resultando na efetiva colisão. Entretanto, teremos um problema: o oponente sempre irá seguir a posição da bolinha, ou seja, ele nunca irá errar. Consequentemente, nossas chances de ganharmos o jogo será mínima. Precisaremos pensar em alguma maneira de aumentá-las!
 
-#### Oponente e placar parte 2
+#### 06 - Oponente e placar parte 2
 >
 > Estamos passando à raquete do oponente a posição Y da bolinha... E se manipulássemos este valor, incluindo uma margem de erro? Então, em vez de passarmos a posição exata da bolinha em "mude 'posição y da bolinha' para 0", incluiremos no lugar de 0 um bloco de operação "[] - []", que terá no primeiro espaço "posição y", e no segundo, 50. Além disso, voltaremos a aumentar a velocidade da bolinha para 12.
 >
@@ -174,7 +174,7 @@ Feito isso, podemos começar.
 > </p>
 >
 
-#### Sons e compartilhando o jogo
+#### 07 - Sons e compartilhando o jogo
 >
 > Nosso jogo está ficando muito legal, temos as colisões da bolinha nas raquetes, a marcação de pontos... Mas há um recurso faltando em nosso jogo, existente na maioria dos jogos: o som, que nos auxilia na ambientação. No Scratch, temos a aba "Sons", e ao clicarmos nele, teremos um som padrão, que iremos deletar. No canto inferior esquerdo, há um ícone de alto falante para selecionarmos um som de nossa preferência.
 >
@@ -202,7 +202,7 @@ Feito isso, podemos começar.
 >
 > Por fim, basta clicarmos em "Compartilhar", na parte superior da tela, e distribuir o link exibido na barra de endereços do navegador. Agora que desenvolvemos a nossa lógica de programação, vamos partir para outro desafio — criar este mesmo jogo utilizando outra linguagem de programação, o JavaScript.
 
-#### Faça como eu fiz na aula
+#### 08 - Faça como eu fiz na aula
 >
 > **Opinião do instrutor**
 > Resumo do código:
@@ -218,7 +218,7 @@ Feito isso, podemos começar.
 >
 > O gabarito deste exercício é o passo a passo demonstrado no vídeo. Tenha certeza de que tudo está certo antes de continuar.
 
-#### Jogo mais difícil
+#### 09 - Jogo mais difícil
 >
 > <p style="color: white; background-color: #272822; padding: 20px">
 > A alternativa dada como certa nessa questão é um tanto quanto controversa com relação aos dados do enunciado. <br>
@@ -242,7 +242,7 @@ Feito isso, podemos começar.
 >
 > [ ] C - No código de ator bolinha, a pessoa pode alterar o valor do subtraendo para `-100`
 
-#### O que aprendemos?
+#### 10 - O que aprendemos?
 >
 > **Nessa aula:**
 > - Desenvolvemos o jogo do Ponto utilizando a linguagem de progrmaação Scratch;
@@ -253,9 +253,9 @@ Feito isso, podemos começar.
 
 ---
 
-### **Iniciando no JavaScript**
+### **02. Iniciando no JavaScript**
 
-#### Cenário e bolinha
+#### 01 - Cenário e bolinha
 >
 > Desenvolvemos nosso jogo e consolidamos a lógica de programação! Agora, vamos desenvolvê-lo em outra linguagem de programação, o JavaScript. Mas onde iremos fazer isso, e como iremos visualizá-lo?
 >
@@ -345,7 +345,7 @@ function draw() {
 >
 > Assim, sepre que iniciarmos o jogo, a bolinha surgirá do centro, indo para baixo diagonalmente até desaparecer na tela. Não é bem isso que queremos, e sim que ela permaneça dentro das bordas da tela. Faremos isso a seguir!
 
-#### Colisão com as bordas
+#### 02 - Colisão com as bordas
 >
 > A bolinha está se movendo para lém das bordas do nosso jogo, e não é este o comportamento que queremos. Queremos que, assim que ela toque uma das bordas, ela inverta a posição, assim como fizemos no Scratch. Para isto, precisamos verificar se ela está tocando a borda em algum momento, dentro da função que etá desenhando o nosso jogo (`draw()`).
 >
@@ -393,7 +393,7 @@ function draw() {
 >
 > Descomentaremos a linha com `xBolinha` e verificaremos que as bordas estão sendo reconhecidas, como gostaríamos.
 
-#### Raio e diâmetro
+#### 03 - Raio e diâmetro
 >
 ![Pong no JavaScript](../../../_prints/0006.png)
 >
@@ -421,7 +421,7 @@ if (yBolinha + raio > height ||  yBolinha - raio < 0) {
 >
 > Voltaremos a velocidade da bolinha para `6` e testaremos mais uma vez, agora sem nenhum trecho comentado. Nossa bolinha está reconhecendo todas as bordas da tela do jogo!
 
-#### Refatoração e funções
+#### 04 - Refatoração e funções
 >
 > Em nosso jogo, criamos uma bolinha e verificamos suas colisões com as bordas, e para que pudéssemos ter este resultado, criamos variáveis para a bolinha, melhorando a legibilidade do código. Na função `draw()` fazemos várias ações: desenhamos e movimentamos a bolinha dentro de uma determinada área, e verificamos se a bolinha está de fato colidindo ou não com as bordas.
 >
@@ -472,7 +472,7 @@ let velocidadeYBolinha = 6;
 >
 > Esta é uma das formas de melhorarmos nosso código, deixando-o mais compreensível e organizado, sem modificar o comportamento final.
 
-#### Faça como eu fiz na aula
+#### 05 - Faça como eu fiz na aula
 >
 > **Sua vez!**
 > Após desenvolver o Pong utilizando o Scratch, vamos desenvolver este jogo utilizando outra linguagem de programação: Javascript.
@@ -483,7 +483,7 @@ let velocidadeYBolinha = 6;
 >
 > O gabarito deste exercício é o passo a passo demonstrado no vídeo. Tenha certeza de que tudo está certo antes de continuar.
 
-#### Função na programação
+#### 06 - Função na programação
 >
 > Sem alterar o comportamento do jogo, movemos alguns códigos da função `draw` para funções que criamos:
 > - `function mostraBolinha()`
@@ -494,7 +494,7 @@ let velocidadeYBolinha = 6;
 >
 > ![Resposta do exercício](../../../_prints/0008.png "Um conjunto de comandos ou códigos que realiza uma tarefa esepecífica.")
 
-#### O que aprendemos?
+#### 07 - O que aprendemos?
 >
 > **Nessa aula:**
 > - Conhecemos o ambiente de desenvolvimento web [P5Js](https://p5js.org/).
@@ -508,8 +508,10 @@ let velocidadeYBolinha = 6;
 
 ---
 
-### Criando minha raquete no jogo
->
+### **03. Criando minha raquete no jogo**
+
+#### 01 - Criando minha raquete
+
 > Em nosso jogo, atualmente temos a bolinha reconhecendo as bordas, mas ainda faltam componentes extremamente importantes: as raquetes. Para a criação da bolinha temos a função `mostraBolinha()` com `circle()`, uma palavra reservada do p5. Não adianta criarmos uma função `raquete()`, pois obteremos um erro indicando que este nome não está definido.
 >
 > Vamos consultar a documentação acessando "Help & Feedback > Reference", no menu superior do p5. Dentre as funções listadas em Shape, está `rect()`, que se refere à forma retangular. Ao ser clicado, teremos alguns exemplos e os parâmetros necessários para seu uso. O X e o Y, que são os primeiros parâmetros, se relacionam à posição do retângulo, enquanto o terceiro e o quarto, W e H, respectivamente, são a largura a altura.
@@ -562,7 +564,7 @@ function draw() {
 >
 > Em seguida movimentaremos nossa raquete!
 
-#### Movimento minha raquete
+#### 02 - Movimento minha raquete
 >
 > Nossa raquete ficou bem legal no nosso jogo - seu posicionamento e tamanhos estão da maneira como gostaríamos. No entanto, ela ainda não se movimenta como no Scratch, em que verificávamos se a seta para cima ou para baixa estava pressionada, e para cada um destes casos executávamos uma ação correspondente.
 >
@@ -602,7 +604,7 @@ function draw() {
 >
 > Para que possamos testar o jogo do p5, é necessário dar enfâse à tela do jogo, isto é, clicar nela após pressionarmos o ícone de play.
 
-#### Colisão com a raquete
+#### 03 - Colisão com a raquete
 >
 > Já fizemos com que a raquete se movimente por meio das setas do teclado! E para que o jogo funcione, descomentaremos `movimentaBolinha()` e testaremos novamente. A bolinha parece ultrapassar a raquete, ignorando sua existência, o que pode ser percebido com maior clareza se diminuirmos a velocidade da bolinha. Além disso, poderemos comentar a linha `yBolinha += velocidadeYBolinha`, para que o movimento só aconteça no eixo X.
 >
@@ -634,7 +636,7 @@ function verificaColisaoRaquete() {
 >
 > Agora que conseguimos corrigir isso, voltaremos a velocidade da bolinha para `6` e descomentaremos todos os trechos de código que estavam comentados.
 
-#### Importando outra biblioteca
+#### 04 - Importando outra biblioteca
 >
 > Implementamos a colisão da bolinha com a raquete, e obtivemos um comportamento esperado, a mudança de direção da bolinha sempre que isto acontece. Será que outras pessoas já não passaram por este mesmo problema utilizando o p5 e o JavaScript? Será que elas não compartilharam as soluções encontradas para que outras pessoas pudessem usá-las também? A resposta é sim!
 >
@@ -688,7 +690,7 @@ function colisaoMinhaRaqueteBiblioteca() {
 >
 > Estamos utilizando a solução de outra pessoa, e quando pressionamos o botão de play, o console exibe `### p5.collide ###`. Isto não foi escrito por nós, sendo proveniente do código que baixamos, em `console.log("### p5.collide ###")`. Para que nada seja exibido no console, basta deletarmos toda essa linha. Iso nos mostra que, mesmo quando pegamos uma possível solução alheia, é possível alterá-la.
 
-#### Faça como eu fiz na aula
+#### 05 - Faça como eu fiz na aula
 >
 > ~~Sua~~ Minha vez!
 >
@@ -699,7 +701,7 @@ function colisaoMinhaRaqueteBiblioteca() {
 - Linha do meu arquivo no p5: <https://editor.p5js.org/seralterego/sketches/x4NPwY6jH>
 >
 
-#### Outras bibliotecas no GitHub
+#### 06 - Outras bibliotecas no GitHub
 >
 > Criamos o código que verifica a colisão da bolinha com a nossa raquete verificando a posição `x` e `y` de cada um deles. Porém, acessando a documentação do P5Js, vimos que existe [uma solução disponível no GitHub](https://github.com/bmoren/p5.collide2D), para reconhecer a colisão entre objetos 2D.
 >
@@ -707,7 +709,7 @@ function colisaoMinhaRaqueteBiblioteca() {
 >
 > ![Resposta do exercício](../../../_prints/0009.png "Um conjunto de comandos ou códigos que realiza uma tarefa esepecífica.")
 
-#### O que aprendemos?
+#### 07 - O que aprendemos?
 >
 > - Criamos uma função para desenhar a raquete
 >
@@ -726,7 +728,9 @@ function mostraRaquete(){
 
 ---
 
-### Criando a raquete do oponente
+### **04. Criando a raquete do oponente**
+
+#### 01 - Raquete do oponente
 >
 > Atualmente, temos a bolinha se movimentando para várias direções, a raquete se movimentando por meio das teclas de setas, a colisão entre elas acontecendo... Mas não estamos jogando contra ninguém. Assim como fizemos no Scratch, poderemos criar um oponente, isto é, outra raquete. Em nosso código, acrescentaremos:
 >
@@ -804,7 +808,7 @@ function movimentaRaqueteOponente() {
 >
 > Significa que não temos uma colisão da bolinha com a raquete do oponente. Lidaremos com isto a seguir!
 
-#### Raquete do oponente
+#### 02 - Colisão com o oponente
 >
 > Criamos a movimentamos a raquete do oponente, porém ainda não existe uma colisão entre ela e a bolinha. No momento, temos `colisaoMinhaRaqueteBiblioteca()`, que duplicaremos e alteraremos:
 >
@@ -837,34 +841,34 @@ function verificaColisaoRaquete(x, y) {
 > Quando `verificaColisaoRaquete()` for executada, com os parâmetros correspondentes, teremos o mesmo comportamento de antes, o reconnhecimento da colisão em ambas as raquetes. Vamos, então, voltar a velocidade da bolinha para `6`, descomentar a linha `verificaColisaoRaquete()` em `draw()`, e `yBolinha += velocidadeYBolinha` em `movimentaBolinha()`, e testar o jogo. Tudo funciona conforme gostaríamos!
 >
 
-#### Colisão com o oponente
+#### 03 - Colisão com o oponente
 
-#### Placar do jogo
+#### 03 - Placar do jogo
 
-#### Faça como eu fiz na aula
+#### 04 - Faça como eu fiz na aula
 
-#### Marcando pontos
+#### 05 - Marcando pontos
 
-#### O que aprendemos?
+#### 06 - O que aprendemos?
 
 ---
 
-### Editando placar e adicionando sons
+### **05. Editando placar e adicionando sons**
 
-#### Editando o placar do jogo
+#### 01 - Editando o placar do jogo
 
-#### Preparando o ambiente
+#### 02 - Preparando o ambiente
 
-#### Adicionando sons
+#### 03 - Adicionando sons
 
-#### Faça como eu fiz na aula
+#### 04 - Faça como eu fiz na aula
 
-#### Sons no P5 JS
+#### 05 - Sons no P5 JS
 
-#### Para saber mais
+#### 06 - Para saber mais
 
-#### O que aprendemos?
+#### 07 - O que aprendemos?
 
-#### Conclusão
+#### 08 - Conclusão
 
-#### Parabéns
+#### 09 - Parabéns
