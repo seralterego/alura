@@ -38,7 +38,7 @@
 
 **FRONT-END**
 
-- :books: [Front-end](https://cursos.alura.com.br/formacao-front-end)
+- :books: [Front-end](https://cursos.alura.com.br/formacao-front-end) | [notas](./frontend/readme.md) :running::dash:
 - :books: [Acessibilidade Web](https://cursos.alura.com.br/formacao-acessibilidade-web)
 
 ---
