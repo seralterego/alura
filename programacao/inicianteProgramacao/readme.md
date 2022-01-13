@@ -26,7 +26,7 @@
 ---
 
 ## Conheça esta Formação!
->
+
 > Se você não conhece nada de programação e desenvolvimento de software, mas deseja entrar nessa área onde o mercado de trabalho está superaquecido, a formação **Iniciante em programação** é para você!
 >
 > Você vai criar suas primeiras páginas web, utilizando HTML, CSS, JS e assim aprender **lógica de programação** junto com as linguagens de programação mais utilizadas no mundo.
@@ -35,29 +35,9 @@
 
 ## Passo a passo
 
-### 1. Aprender a lógica de programação
->
-> O raciocío lógico nos acompanha o tempo todo. Por exemplo, para fazer café, precisamos primeiro aquecer a água, depois despejarmos ela quente sobre o pó de café, assim o pó será coado e o café estará pronto para beber. Caso não siga sequência lógica, vai ser difícil saborear um bom café.
->
-> A lógica de programação nada mais é do que uma sequência de passos para resolver um problema. Quem vai resolver o problema, nesse caso, é o computador, baseado nas instruções que passamos para nos comunicarmos com ele.
->
+### [1. Aprender a lógica de programação](./01-AprenderLogicaDeProgramacao/readme.md)
 
-#### Conteúdo
->
-> - :page_facing_up: [POST | 5 dúvidas de quem quer iniciar na carreira de programação - Blog da Caelum](./01-postDuvidas/readme.md) :white_check_mark:
->
-> - :books: [CURSO | Jogos clássicos parte 1: Iniciando no JavaScript com Pong](./02-cursoJogosClassicos01/readme.md) :running::dash:
->
-> - :books: [CURSO | Jogos clássicos parte 2: laços e listas com JavaScript](./03-cursoJogosClassicos02/readme.md)
->
-> - :page_facing_up: [POST | Como escolher minha carreira em TI | Alura Cursos Online](./04-postEscolherCarreiraTI/readne.md)
->
-> - :notebook: [LIVRO | Livro de jogos com HTML5 e JavaScript - Casa do Código](./05-livroJogosHTML&JavaScript/readme.md)
->
-> - :blue_book: [ALURA+ | Qual é a diferença entre back-end e front-end?](./06-aluraMaisDiferencaBackFrontEnd/readme.md)
->
-
-### 2. Conhecer o Sistema Operacional
+### [2. Conhecer o Sistema Operacional](./02-)
 >
 > Agora que você molhou os pés no mundo da programação e dos códigos, é importante que você conheça como o computador funciona e como ele interpreta os código que criamos. Isso porque, todo código que criamos será executado por uma máquina, então saber como elas funcionam nos ajuda a entender melhor os problemas comuns que toda pessoa na área de tecnologia precisa resolver diariamente.
 >
